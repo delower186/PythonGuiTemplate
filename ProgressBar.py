@@ -1,6 +1,7 @@
 import time
 
 from PyQt6.QtWidgets import QProgressBar
+from Alerts import show_info_messagebox
 
 class ProgressBar(QProgressBar):
     def __init__(self, parent=None):
@@ -30,6 +31,7 @@ class ProgressBar(QProgressBar):
                 self.setFormat("Ready ........... %p%")
 
             if value >= self.maximum() or self._active:
+                show_info_messagebox("System Ready")
                 self.setValue(100)
                 break
             elif value >= self.maximum() or not self._active:

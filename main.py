@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QPushButton, QGrid
     QTableWidget, QTableWidgetItem
 from ProgressBar import ProgressBar
 import pandas as pd
+from Alerts import show_info_messagebox
 
 class Window(QWidget):
 
@@ -46,6 +47,7 @@ class Window(QWidget):
        self.table.setRowCount(0)
        self.table.setColumnCount(0)
        self.file_label.setText("No file selected.")
+       show_info_messagebox("Data removed successfully.")
 
    def load_excel_data(self, excel_file_path):
 
@@ -73,7 +75,7 @@ class Window(QWidget):
                    item = QTableWidgetItem(str(value))
                    self.table.setItem(row_index, col_index, item)
 
-           print("Excel loaded successfully.")
+           show_info_messagebox("Excel data loaded successfully.")
 
        except Exception as e:
            import traceback
